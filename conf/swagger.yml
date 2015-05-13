@@ -1,0 +1,13 @@
+info:
+    descrption: "Example API description"
+    version: "1.0"
+    title: "Example API"
+    termsOfService: "http://example.com/terms"
+    contact:
+        name: "Contact Name"
+        url: "http://example.com/contact"
+        email: "contact@example.com"
+    #license: ...
+### If enabled, the host is static and not resolved by the request
+#host: "example.com"
+basePath: "/api"

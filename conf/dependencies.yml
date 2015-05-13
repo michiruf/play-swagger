@@ -1,0 +1,8 @@
+self: play -> swagger 0.0.1
+
+require:
+    - play
+    - com.wordnik -> swagger-core 1.5.2-M1
+    - com.wordnik -> swagger-jaxrs 1.5.2-M1:
+        exclude:
+            - org.javassist -> *
