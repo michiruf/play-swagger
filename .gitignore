@@ -16,6 +16,7 @@
 # Ignore Play! working directory
 /conf/application.conf
 /data
+/dist
 /lib
 /logs
 /modules
