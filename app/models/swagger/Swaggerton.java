@@ -32,7 +32,7 @@ public class Swaggerton {
         // Keep this in mind whenever you change the dependencies.
 
         beanConfig = new PlayBeanConfig();
-        BeanConfigResource.init().appendToBeanConfig(beanConfig);
+        SwaggerConfiguration.get().applyToBeanConfig(beanConfig);
         // This just scans the stuff instead of being a setter
         beanConfig.setScan(true);
     }
