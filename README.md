@@ -2,7 +2,7 @@
 Playframework 1.3 module to integrate swagger in your application.
 
 ## Add it to your project
-Put the dependency in your <pre>dependencies.yml</pre> file:
+Put the dependency in your `dependencies.yml` file:
 ```lang
 require:
     - boblakk -> swagger 0.0.1
@@ -19,7 +19,7 @@ repositories:
 ```
 
 ## Add routes to your application
-In your <pre>conf/routs</pre> file of your application put something like this:
+In your `conf/routs` file of your application put something like this:
 ```
 # import these routes in the main app like this:
 *     /api                    module:swagger
@@ -27,7 +27,7 @@ In your <pre>conf/routs</pre> file of your application put something like this:
 You can change the path as you want.
 
 ## Configure the module
-Create the file <pre>swagger.yml</pre> in your applications <pre>conf</pre> directory:
+Create the file `swagger.yml` in your applications `conf` directory:
 ```lang
 info:
     descrption: "Example API description"
@@ -45,7 +45,7 @@ info:
 host: "example.com"
 basePath: "/api"
 ```
-Values passed here are used to provide information about your service in the generated <pre>swagger.json</pre>
+Values passed here are used to provide information about your service in the generated `swagger.json`
 
 ## Version table
 Play Swagger module version     | Swagger core version | Play version
