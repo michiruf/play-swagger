@@ -5,17 +5,17 @@ Playframework 1.3 module to integrate swagger in your application.
 Put the dependency in your `dependencies.yml` file:
 ```lang
 require:
-    - boblakk -> swagger 0.0.1
+    - michiruf -> swagger 0.0.1
 ```
 
 Define the repository to get the module from github:
 ```lang
 repositories:
-   - boblakk-play-github:
+   - michiruf-play-github:
        type:       http
        artifact:   "https://github.com/[organization]/play-[module]/raw/master/release/[module]-[revision].zip"
        contains:
-           - boblakk -> *
+           - michiruf -> *
 ```
 
 ## Add routes to your application
