@@ -54,7 +54,7 @@ Play Swagger module version     | Swagger core version | Play version
 
 ## License
 
-    Copyright 2015 Michael Ruf <ruf_michael@gmx.de>
+    Copyright 2015 Michael Ruf
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
