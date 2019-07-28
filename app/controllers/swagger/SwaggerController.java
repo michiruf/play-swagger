@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.wordnik.swagger.models.Swagger;
+import io.swagger.models.Swagger;
 import models.swagger.Swaggerton;
+import play.Play;
 import play.mvc.Controller;
 import play.mvc.results.RenderJson;
 
@@ -13,7 +14,6 @@ import play.mvc.results.RenderJson;
  * @author Michael Ruf
  * @since 2015-05-03
  */
-@SuppressWarnings("unused")
 public class SwaggerController extends Controller {
 
     private static final ObjectMapper mapper;
@@ -25,17 +25,26 @@ public class SwaggerController extends Controller {
     }
 
     public static void json() throws RenderJson {
+        // If in dev mode, reset the swagger configuration to rebuild it without restarting the server
+        if (Play.mode.isDev())
+            Swaggerton.reset();
+
+        // Get the swagger object
         Swagger swaggerObject = Swaggerton.get().getSwagger();
 
-        if (swaggerObject.getHost() == null) {
+        // Patch host if necessary
+        if (swaggerObject.getHost() == null)
             swaggerObject.setHost(request.host);
-        }
 
+        // Output the json
         try {
             throw new RenderJson(mapper.writeValueAsString(swaggerObject));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-    }
 
+        // Output json like swagger intents
+        // TODO
+
+    }
 }

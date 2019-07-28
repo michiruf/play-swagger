@@ -1,15 +1,16 @@
 package models.swagger;
 
-import com.wordnik.swagger.models.Swagger;
+import io.swagger.models.Swagger;
+import io.swagger.util.Yaml;
+import play.Play;
 
 /**
- * Singleton instance to keep the swagger information in.
- *
  * @author Michael Ruf
- * @since 2015-05-03
+ * @since 2019-06-10
  */
 public class Swaggerton {
 
+    private static final String YAML_CONF_PATH = "conf/swagger.yml";
     private static Swaggerton instance;
 
     public static Swaggerton get() {
@@ -23,22 +24,28 @@ public class Swaggerton {
         return instance;
     }
 
-    private PlayBeanConfig beanConfig;
+    public static synchronized void reset() {
+        instance = null;
+    }
+
+    private Swagger swagger;
 
     private Swaggerton() {
-        // Note that with swagger 1.5.0-M1 the error occurred,
-        // that the setScan() and more specifically the classes()
-        // methods returned an NullPointerException.
-        // Keep this in mind whenever you change the dependencies.
+        try {
+            init();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-        beanConfig = new PlayBeanConfig();
-        SwaggerConfiguration.get().applyToBeanConfig(beanConfig);
-        // This just scans the stuff instead of being a setter
-        beanConfig.setScan(true);
+    private void init() throws Exception {
+        Swagger yamlSwagger = Yaml.mapper().readValue(Play.getFile(YAML_CONF_PATH), Swagger.class);
+        PlayBeanConfig bean = new PlayBeanConfig(yamlSwagger);
+        bean.enableScan();
+        swagger = bean.getSwagger();
     }
 
     public Swagger getSwagger() {
-        return beanConfig.getSwagger();
+        return swagger;
     }
-
 }

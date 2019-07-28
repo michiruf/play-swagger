@@ -1,8 +1,14 @@
-self: play -> swagger 0.0.1
+self: play -> swagger 0.0.2
+
+# TODO Maybe update to 2.0.8
+# https://github.com/swagger-api/swagger-core
+# https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-core
 
 require:
     - play
-    - com.wordnik -> swagger-core 1.5.2-M1
-    - com.wordnik -> swagger-jaxrs 1.5.2-M1:
+    - io.swagger -> swagger-core 1.5.22
+    - io.swagger -> swagger-jaxrs 1.5.22:
         exclude:
             - org.javassist -> *
+#    - io.swagger.core.v3 -> swagger-core 2.0.8
+#    - io.swagger.core.v3 -> swagger-jaxrs2 2.0.8
